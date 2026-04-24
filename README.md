@@ -1,24 +1,36 @@
 # Smart Campus API
 
+
 ## Name: Ganguli Hettiarachchi
 ## Student ID: 20231948/ w2120296
 
+
 # Overview
+
 
 A RESTful API built with Java, JAX-RS (Jersey), and Apache Tomcat for managing rooms and sensors in a university campus. It allows users to create rooms, associate sensors with rooms, and log sensor data. This API is built using REST principles, showcasing resource-oriented architecture, appropriate HTTP methods and status codes. 
 The API has three primary resources: 
+
  • **Rooms** - correspond to physical rooms on campus. Rooms are identified by an ID, name, capacity, and have sensors installed. 
  • **Sensors** - equipment placed in rooms to measure various parameters (temperature, CO₂, occupancy, etc.) Sensors are associated with a room. 
  • **Readings** - time series data recorded by sensors. Sensors keep a record of their readings. 
+ 
 The API is designed to mimic a basic campus monitoring system to monitor environmental data via API calls.
+
 
 # Base URL
 
+
 http://localhost:8080/SmartCampusAPI/api/v1
+
 
 # Video Demonstration
 
+## https://drive.google.com/file/d/1L9hq8rL1H0UCaxgIz0mjbXo21fhbxgvf/view?usp=sharing
+
+
 # Technologies Used
+
 
 •	Java (JDK 11 or higher) 
 •	JAX-RS (Jersey implementation) 
@@ -26,46 +38,63 @@ http://localhost:8080/SmartCampusAPI/api/v1
 •	Maven (dependency management and build tool) 
 •	NetBeans IDE 
 
+
 # Setup and Running the Application
+
 ## Prerequisites
+
 
 Ensure the following are installed and configured:
 •	Java JDK 11 or higher 
 •	Apache Tomcat 9 
 •	NetBeans IDE with Maven support 
 
+
 # Steps
 
-1.	Clone the repository
-git clone https://github.com/YOUR-USERNAME/SmartCampusAPI.git 
-2.	Open the project in NetBeans
+
+**1.	Clone the repository**
+git clone https://github.com/YOUR-USERNAME/SmartCampusAPI.git
+
+**3. Open the project in NetBeans**
 Go to File, then Open Project, and select the project folder
-3.	Configure Tomcat Server
+
+**5. Configure Tomcat Server**
 Go to Tools, then Servers, then Add Server, and choose Apache Tomcat
-Select the Tomcat installation directory 
-4.	Build the project
+Select the Tomcat installation directory
+
+**7. Build the project**
 Right click the project and then select Clean and Build
-Wait until the console shows: BUILD SUCCESS 
-5.	Run the application
-Right click the project and Run 
-6.	Verify deployment
+Wait until the console shows: BUILD SUCCESS
+
+**9. Run the application**
+Right click the project and Run
+
+**11. Verify deployment**
 Ensure the console displays:
-OK - Started application at context path [/SmartCampusAPI] 
-7.	Access the API
+OK - Started application at context path [/SmartCampusAPI]
+
+**13. Access the API**
 Open Postman or a browser and navigate to:
 http://localhost:8080/SmartCampusAPI/api/v1 
 
+
 # API Usage Examples
 
+
 ### 1. Discovery Endpoint
+
 GET /api/v1
 Returns general API information along with links to available resources (HATEOAS).
 
+
 ### 2. Get All Rooms
+
 GET /api/v1/rooms
 Retrieves a list of all rooms currently stored in the system.
 
 ### 3. Create a Room
+
 POST /api/v1/rooms
 Content-Type: application/json
 {
@@ -76,10 +105,12 @@ Content-Type: application/json
 Adds a new room to the system.
 
 ### 4. Filter Sensors by Type
+
 GET /api/v1/sensors?type=Temperature
 Returns only sensors matching the specified type.
 
 ### 5. Add Sensor Reading
+
 POST /api/v1/sensors/TEMP-001/readings
 Content-Type: application/json
 {
@@ -87,7 +118,9 @@ Content-Type: application/json
 }
 Adds a new reading to a sensor and updates its current value.
 
+
 # Error Handling
+
 
 The API returns appropriate HTTP status codes to indicate success or failure:
 •	404 Not Found - resource does not exist 
@@ -96,6 +129,7 @@ The API returns appropriate HTTP status codes to indicate success or failure:
 •	403 Forbidden - action not allowed (e.g., sensor under maintenance) 
 •	415 Unsupported Media Type - incorrect content type 
 This approach ensures clear communication between the client and server.
+
 
 # Key Features
 
@@ -111,7 +145,9 @@ Notes
 •	No external database is used in this implementation 
 •	The API is intended for learning and demonstration purposes 
 
+
 # Answers to Coursework Questions
+
 
 ## Part 1.1 - JAX-RS Resource Class Lifecycle
 
@@ -176,3 +212,6 @@ It may also reveal paths to files on the server and line numbers in the code, so
  A filter is a single class that automatically gets called for every request and response of the API. It only needs to be implemented once. If logging were added manually inside every resource method, every new endpoint added in the future would need someone to remember to add the logging line. Forgetting just once means that the endpoint has no logs at all. Changing the log format later would mean editing every single method in the whole project.
 With a filter, if logging requirements change, updating a single place applies the change to all API calls. The ContainerRequestFilter part is executed before the request reaches the method and logs the method and URL. The ContainerResponseFilter part runs after the method is done and logs the HTTP status code returned. This provides complete insight into what's going on in the API without any code duplication.
 
+
+## Author
+## Ganguli Hettiarachchi
