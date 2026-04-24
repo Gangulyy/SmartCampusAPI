@@ -1,43 +1,43 @@
 # Smart Campus API
 
-
 ## Name: Ganguli Hettiarachchi
-## Student ID: 20231948/ w2120296
+## Student ID: 20231948 / w2120296
 
+---
 
 # Overview
 
+A RESTful API built with Java, JAX-RS (Jersey), and Apache Tomcat for managing rooms and sensors in a university campus. It allows users to create rooms, associate sensors with rooms, and log sensor data.
 
-A RESTful API built with Java, JAX-RS (Jersey), and Apache Tomcat for managing rooms and sensors in a university campus. It allows users to create rooms, associate sensors with rooms, and log sensor data. This API is built using REST principles, showcasing resource-oriented architecture, appropriate HTTP methods and status codes. 
-The API has three primary resources: 
+The API has three primary resources:
 
- • **Rooms** - correspond to physical rooms on campus. Rooms are identified by an ID, name, capacity, and have sensors installed. 
- • **Sensors** - equipment placed in rooms to measure various parameters (temperature, CO₂, occupancy, etc.) Sensors are associated with a room. 
- • **Readings** - time series data recorded by sensors. Sensors keep a record of their readings. 
- 
-The API is designed to mimic a basic campus monitoring system to monitor environmental data via API calls.
+- **Rooms** - physical rooms on campus with an ID, name, capacity, and list of sensors
+- **Sensors** - devices placed in rooms to measure temperature, CO2, occupancy etc
+- **Readings** - time series data recorded by sensors over time
 
+---
 
 # Base URL
-
-
 http://localhost:8080/SmartCampusAPI/api/v1
 
+---
 
 # Video Demonstration
 
 https://drive.google.com/file/d/1L9hq8rL1H0UCaxgIz0mjbXo21fhbxgvf/view?usp=sharing
 
+---
 
 # Technologies Used
 
 
-•	Java (JDK 11 or higher) 
-•	JAX-RS (Jersey implementation) 
-•	Apache Tomcat 9 (servlet container) 
-•	Maven (dependency management and build tool) 
-•	NetBeans IDE 
+- Java (JDK 11 or higher)
+- JAX-RS (Jersey implementation)
+- Apache Tomcat 9 (servlet container)
+- Maven (dependency management and build tool)
+- NetBeans IDE 
 
+---
 
 # Setup and Running the Application
 
@@ -45,40 +45,46 @@ https://drive.google.com/file/d/1L9hq8rL1H0UCaxgIz0mjbXo21fhbxgvf/view?usp=shari
 
 
 Ensure the following are installed and configured:
-•	Java JDK 11 or higher 
-•	Apache Tomcat 9 
-•	NetBeans IDE with Maven support 
+- Java JDK 11 or higher
+- Apache Tomcat 9
+- NetBeans IDE with Maven support 
 
 
 # Steps
 
+**1. Clone the repository**
 
-**1.	Clone the repository**
+```bash
 git clone https://github.com/YOUR-USERNAME/SmartCampusAPI.git
+```
 
-**3. Open the project in NetBeans**
-Go to File, then Open Project, and select the project folder
+**2. Open the project in NetBeans**
 
-**5. Configure Tomcat Server**
-Go to Tools, then Servers, then Add Server, and choose Apache Tomcat
-Select the Tomcat installation directory
+Go to File, Open Project and then select the project folder
 
-**7. Build the project**
-Right click the project and then select Clean and Build
-Wait until the console shows: BUILD SUCCESS
+**3. Configure Tomcat Server**
 
-**9. Run the application**
+Go to Tools, Servers, Add Server, Apache Tomcat, and then select your Tomcat folder
+
+**4. Build the project**
+
+Right click the project, select Clean and Build and wait for BUILD SUCCESS
+
+**5. Run the application**
+
 Right click the project and Run
 
-**11. Verify deployment**
-Ensure the console displays:
+**6. Verify deployment**
+
+Wait for the console to show:
 OK - Started application at context path [/SmartCampusAPI]
 
-**13. Access the API**
-Open Postman or a browser and navigate to:
-http://localhost:8080/SmartCampusAPI/api/v1 
+**7. Access the API**
 
+Open Postman or a browser and go to:
+http://localhost:8080/SmartCampusAPI/api/v1
 
+---
 
 # Sample Curl Commands
 
