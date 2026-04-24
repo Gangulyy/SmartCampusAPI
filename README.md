@@ -26,7 +26,7 @@ http://localhost:8080/SmartCampusAPI/api/v1
 
 # Video Demonstration
 
-## https://drive.google.com/file/d/1L9hq8rL1H0UCaxgIz0mjbXo21fhbxgvf/view?usp=sharing
+https://drive.google.com/file/d/1L9hq8rL1H0UCaxgIz0mjbXo21fhbxgvf/view?usp=sharing
 
 
 # Technologies Used
@@ -79,7 +79,7 @@ Open Postman or a browser and navigate to:
 http://localhost:8080/SmartCampusAPI/api/v1 
 
 
-# API Usage Examples
+# Sample Curl Commands
 
 
 ### 1. Discovery Endpoint
@@ -133,17 +133,14 @@ This approach ensures clear communication between the client and server.
 
 # Key Features
 
-•	RESTful API using standard HTTP verbs (GET, POST, DELETE)
-•	HATEOAS discovery endpoint for better discoverability 
-•	DataStore in memory (Singleton pattern) 
-•	Concurrency support with ConcurrentHashMap 
-•	Sub-resources to manage sensor data  
-•	Log request/response to a centralised log using filters 
-•	Custom exception mapping to default responses
-Notes
-•	Data is stored in memory and will reset when the server restarts 
-•	No external database is used in this implementation 
-•	The API is intended for learning and demonstration purposes 
+
+- RESTful API using standard HTTP verbs (GET, POST, DELETE)
+- HATEOAS discovery endpoint
+- In-memory DataStore using Singleton pattern
+- Thread-safe ConcurrentHashMap for concurrent requests
+- Sub-resources for sensor readings
+- Request and response logging via JAX-RS filters
+- Custom exception mappers for clean JSON error responses
 
 
 # Answers to Coursework Questions
