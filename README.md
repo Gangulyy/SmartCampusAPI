@@ -79,56 +79,93 @@ Open Postman or a browser and navigate to:
 http://localhost:8080/SmartCampusAPI/api/v1 
 
 
-# Sample Curl Commands
 
+# Sample Curl Commands
 
 ### 1. Discovery Endpoint
 
-GET /api/v1
-Returns general API information along with links to available resources (HATEOAS).
+```bash
+curl -X GET http://localhost:8080/SmartCampusAPI/api/v1
+```
 
+Returns general API information and links to available resources (HATEOAS).
 
 ### 2. Get All Rooms
 
-GET /api/v1/rooms
-Retrieves a list of all rooms currently stored in the system.
+```bash
+curl -X GET http://localhost:8080/SmartCampusAPI/api/v1/rooms
+```
+
+Retrieves a list of all rooms in the system.
 
 ### 3. Create a Room
 
-POST /api/v1/rooms
-Content-Type: application/json
-{
-"id": "A101",
-"name": "Lecture Hall",
-"capacity": 100
-}
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+  -H "Content-Type: application/json" \
+  -d "{\"id\":\"A101\",\"name\":\"Lecture Hall\",\"capacity\":100}"
+```
+
 Adds a new room to the system.
 
 ### 4. Filter Sensors by Type
 
-GET /api/v1/sensors?type=Temperature
+```bash
+curl -X GET "http://localhost:8080/SmartCampusAPI/api/v1/sensors?type=Temperature"
+```
+
 Returns only sensors matching the specified type.
 
 ### 5. Add Sensor Reading
 
-POST /api/v1/sensors/TEMP-001/readings
-Content-Type: application/json
-{
-"value": 25.3
-}
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors/TEMP-001/readings \
+  -H "Content-Type: application/json" \
+  -d "{\"value\":25.3}"
+```
+
 Adds a new reading to a sensor and updates its current value.
 
+### 6. Delete Room With Sensors (409 Error)
 
-# Error Handling
+```bash
+curl -X DELETE http://localhost:8080/SmartCampusAPI/api/v1/rooms/LIB-301
+```
 
+Returns 409 Conflict because the room still has sensors.
 
-The API returns appropriate HTTP status codes to indicate success or failure:
-•	404 Not Found - resource does not exist 
-•	409 Conflict - duplicate resource or invalid operation 
-•	422 Unprocessable Entity - valid request format but invalid data (e.g., incorrect roomId) 
-•	403 Forbidden - action not allowed (e.g., sensor under maintenance) 
-•	415 Unsupported Media Type - incorrect content type 
-This approach ensures clear communication between the client and server.
+### 7. Create Sensor With Invalid Room (422 Error)
+
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors \
+  -H "Content-Type: application/json" \
+  -d "{\"id\":\"OCC-001\",\"type\":\"Occupancy\",\"roomId\":\"FAKE-999\"}"
+```
+
+Returns 422 because the roomId does not exist.
+
+### 8. Post Reading to Maintenance Sensor (403 Error)
+
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors/CO2-001/readings \
+  -H "Content-Type: application/json" \
+  -d "{\"value\":500.0}"
+```
+
+Returns 403 because the sensor is under maintenance.
+
+---
+
+## Error Handling
+
+| Status Code | Meaning |
+|-------------|---------|
+| 404 | Resource does not exist |
+| 409 | Conflict - room still has sensors |
+| 422 | Valid JSON but invalid data (e.g. wrong roomId) |
+| 403 | Action not allowed (e.g. sensor under maintenance) |
+| 415 | Wrong content type sent |
+| 500 | Unexpected server error |
 
 
 # Key Features
